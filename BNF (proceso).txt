@@ -1,0 +1,13 @@
+<programa>::-<instrucciones>
+<instrucciones>::-<defvariable>|<AsignacionVariable>|<Desicion>|<Operacion>|<Leer>|<Escribir>
+
+<defvariables>::- 'definir'<Variable><Tipo_Variable>
+<Tipo_Variable>::- 'Cadena'|'Entero'|'Real'|'Booleano'
+<Variable>::- <LetraM>|<Variable><cadena>
+
+<cadena>::- <caracter>|<cadena><caracter>
+<caracter>::- <LetrasM>|<letras>|<Numeros>
+
+<AsignacionVariable>::- <Variable> '<-' <cadena>
+<Leer>::- 'leer ' <cadena>
+<Escribir>::- <cadena>
