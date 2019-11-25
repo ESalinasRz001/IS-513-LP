@@ -1,13 +1,85 @@
-<programa>::-<instrucciones>
-<instrucciones>::-<defvariable>|<AsignacionVariable>|<Desicion>|<Operacion>|<Leer>|<Escribir>
+<Programa> ::- <Conjunto_Instrucciones>
+<Conjunto_Instrucciones>::-<Instruccion>|<Conjunto_Instrucciones> <Instruccion>
 
-<defvariables>::- 'definir'<Variable><Tipo_Variable>
-<Tipo_Variable>::- 'Cadena'|'Entero'|'Real'|'Booleano'
-<Variable>::- <LetraM>|<Variable><cadena>
+<Instruccion> ::- <Def_Variable> | <Nombre_Variable> | <Sentencia> | <Leer> | <Imprimir> | <Posicion> | <Asig_Variable> | <Operaciones_A>
 
-<cadena>::- <caracter>|<cadena><caracter>
-<caracter>::- <LetrasM>|<letras>|<Numeros>
+<Def_Variable>::-'definir'<Nombre_Variable> <Tipo_de_Dato>
 
-<AsignacionVariable>::- <Variable> '<-' <cadena>
-<Leer>::- 'leer ' <cadena>
-<Escribir>::- <cadena>
+<Asignacion> :: - <Nombre_Variable>'<-'<Tipo_de_Dato>
+
+<Nombre_Variable> :: - <Letra_M>|<Letra_M> <Palabra>
+
+<Palabra>::-<Caracter>|<Palabra> <Caracter>
+
+<Tipo_de_Dato> :: - <Entero> | <Real> | <Cadena> | <Booleano>
+
+<Entero>::- <Signo><Numero> | <Numero>
+<Numero>::-<Digito>|<Numero> <Digito>
+<Real>::-<Signo> <Numero> '.' <Numero> | <Numero> '.' <Numero>
+<Cadena> :: - '"' <Frase> '"'
+
+
+// Decisiones y Ciclos
+
+
+<Sentencia> :: = <Si> | <Mientras> | <Repetir> | <Sino>
+
+<Si> ::- 'si' <Condicion> 'hacer'<Instruccion>'finsi'|'si' <Condicion> 'hacer'<Sentencia> 'finsi'
+
+<Sino> ::- 'si' <Condicion> 'hacer' <Instruccion> 'sino' <Instruccion>|
+	   'si' <Condicion> 'hacer' <Sentencia> 'sino' <Instruccion>|
+	   'si' <Condicion> 'hacer' <Instruccion> 'sino' <Sentencia>| 		
+	   'si' <Condicion> 'hacer' <Sentencia> 'sino' <Sentencia>|
+
+<Mientras> :: - 'mientras' <Condicion> 'hacer' <Instruccion>
+<Repetir> :: - 'repetir' <Instruccion> 'hasta' <Condicion>
+
+
+<Condicion> ::- <Nombre_Variable><Operador_R><Expresion>|               
+	       |<Expresion><Operador_R><Nombre_Variable>|
+               |<Expresion><Operador_R><Expresion>
+
+<Expresión> ::- <Nombre_Variable> | <Numero>
+
+
+// Recibir Datos
+
+	<leer> :: - 'leer' <Nombre_Variable>
+
+// Imprimir En pantalla
+
+	<imprimir> :: - 'imprimir' <Nombre_variable> | 'imprimir' <Cadena> 
+
+//  Posicion:
+
+	<Posicion>::-'Cursor'<Entero> <DosPuntos> <Entero>
+
+// Operaciones
+
+<Operacion>::- <Numero><Operador_basico><Numero>|<Operacion><Operador_Basico><Numero>
+<Operador_R> ::- = | <> | <|> | <= |> =
+
+
+
+
+// Terminales 
+
+<Caracter> :: - 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G' | 'H' | 'I' | 'J' | 'K' | 'L' | 'M' | 'N' | 'O' | 'P' | 'Q' | 'R' | 'S' | 'T' | 'U' | 'V' | 'W' | 'X' | 'Y' | 'Z'
+		| 'a' | 'b' | 'c' | 'd' | 'e' | 'f' | 'g' | 'h' | 'i' | 'j' | 'k' | 'l' | 'm' | 'n' | 'o' | 'p' | 'q' | 'r' | 's' | 't' | 'u' | 'v' | 'w' | 'x' | 'y' | 'z'
+		| '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' |
+		    
+<Letra_M> ::- 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G' | 'H' | 'I' | 'J' | 'K' | 'L' | 'M' | 'N' | 'O' | 'P' | 'Q' | 'R' | 'S' | 'T' | 'U' | 'V' | 'W' | 'X' | 'Y' | 'Z'
+<Letra_m> ::- 'a' | 'b' | 'c' | 'd' | 'e' | 'f' | 'g' | 'h' | 'i' | 'j' | 'k' | 'l' | 'm' | 'n' | 'o' | 'p' | 'q' | 'r' | 's' | 't' | 'u' | 'v' | 'w' | 'x' | 'y' | 'z'
+<Digito> ::-  '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9'
+
+<Signo_Numerico> ::- '+' | '-'
+<Operador relacional> ::- '=' | '<>' | '<' | '>' | '<=' |'>='
+<Operador_Basico> :: - '+' | '-' | '*' | '/'
+<DosPuntos> ::- ':' 
+
+<Frase>::- 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G' | 'H' | 'I' | 'J' | 'K' | 'L' | 'M' | 'N' | 'O' | 'P' | 'Q' | 'R' | 'S' | 'T' | 'U' | 'V' | 'W' | 'X' | 'Y' | 'Z' | 
+           'a' | 'b' | 'c' | 'd' | 'e' | 'f' | 'g' | 'h' | 'i' | 'j' | 'k' | 'l' | 'm' | 'n' | 'o' | 'p' | 'q' | 'r' | 's' | 't' | 'u' | 'v' | 'w' | 'x' | 'y' | 'z' |
+           '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '+' | '-' | '"'| '=' | '<>' | '<' | '>' | '<=' | '>=' | '+' | '-' | '*' | '/' | '(' | ')' | '!' |
+  		
+<palabra_clave>:: - 'leer' | 'imprimir' | 'mientras' | 'hasta' | 'repetir' | 'si' | 'sino' | 'hacer' | 'cursor' | 'entero' | 'decimal' | 'cadena'
+
